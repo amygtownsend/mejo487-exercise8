@@ -29,16 +29,15 @@ $(function(){
           data: data2,
           success: function(data2){
             console.log(data2);
-            if (data2.address.city) {
-              var city = data2.address.city + ', ';
-            } else {
-              var city = '';
-            }
-
             if (data2.error) {
               html += 'The space station is currently over an ocean.';
               $('#results').html(html);
             } else {
+              if (data2.address.city) {
+                var city = data2.address.city + ', ';
+              } else {
+                var city = '';
+              }
               html += 'The space station is currently over ' + city + data2.address.country + '.';
               $('#results').html(html);
             }
